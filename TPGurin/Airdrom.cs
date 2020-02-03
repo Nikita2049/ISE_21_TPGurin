@@ -52,13 +52,13 @@ namespace TPGurin
         /// Логика действия: в порт добавляется судно
         /// </summary>
         /// <param name="p">Порт</param>
-        /// <param name="ship">Добавляемое судно</param>
+        /// <param name="air">Добавляемое судно</param>
         /// <returns></returns>
         public static int operator +(Port<T> p, T ship)
         {
             if (p._places.Count == p._maxCount)
             {
-                return -1;
+                throw new ParkingOverflowException();
             }
             for (int i = 0; i < p._maxCount; i++)
             {
@@ -84,11 +84,11 @@ namespace TPGurin
         {
             if (!p.CheckFreePlace(index))
             {
-                T ship = p._places[index];
+                T air = p._places[index];
                 p._places.Remove(index);
-                return ship;
+                return air;
             }
-            return null;
+            throw new ParkingNotFoundException(index);
         }
         /// <summary>
         /// Метод проверки заполнености парковочного места (ячейки массива)
@@ -99,7 +99,7 @@ namespace TPGurin
         {
             return !_places.ContainsKey(index);
         }
-        public T GetShipByKey(int key)
+        public T GetAirByKey(int key)
         {
             return _places.ContainsKey(key) ? _places[key] : null;
         }
@@ -153,7 +153,12 @@ namespace TPGurin
                     _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 15, ind % 5
                     * _placeSizeHeight + 55, PictureWidth, PictureHeight);
                 }
+                else
+                {
+                    throw new ParkingOccupiedPlaceException(ind);
+                }
             }
         }
+
     }
 }
