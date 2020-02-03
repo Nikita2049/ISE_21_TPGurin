@@ -23,7 +23,7 @@ namespace TPGurin
         /// <summary>
         /// Конструктор
         /// </summary>
-        /// <param name="countStages">Количество уровенй порта</param>
+        /// <param name="countStages">Количество уровеней в порту</param>
         /// <param name="pictureWidth"></param>
         /// <param name="pictureHeight"></param>
         public MultiLevelAirdrom(int countStages, int pictureWidth, int pictureHeight)
@@ -54,7 +54,7 @@ namespace TPGurin
         }
 
         //сохранение
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -66,24 +66,19 @@ namespace TPGurin
                 foreach (var level in parkingStages)
                 {
                     sw.WriteLine("Level");
-                    for (int i = 0; i < countPlaces; i++)
+                    foreach (IAir air in level)
                     {
-                        var air = level[i];
-                        if (air != null)
+                        if (air.GetType().Name == "Air")
                         {
-                            if (air.GetType().Name == "Air")
-                            {
-                                sw.WriteLine(i + ":Air:" + air);
-                            }
-                            if (air.GetType().Name == "SuperAir")
-                            {
-                                sw.WriteLine(i + ":SuperAir:" + air);
-                            }
+                            sw.WriteLine(level.GetKey + ":Air:" + air);
+                        }
+                        if (air.GetType().Name == "SuperAir")
+                        {
+                            sw.WriteLine(level.GetKey + ":SuperAir:" + air);
                         }
                     }
                 }
             }
-            return true;
         }
 
         //выгрузить
@@ -141,6 +136,11 @@ namespace TPGurin
                 }
                 return true;
             }
+        }
+
+        public void Sort()
+        {
+            parkingStages.Sort();
         }
     }
 }
