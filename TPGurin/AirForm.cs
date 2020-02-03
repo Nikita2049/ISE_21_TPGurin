@@ -12,7 +12,7 @@ namespace TPGurin
 {
     public partial class AirForm : Form
     {
-        private Air air;
+        private IAir air;
 
         public AirForm()
         {
@@ -27,10 +27,10 @@ namespace TPGurin
         }
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-            int minpos;
+            int minpos = 30;
             Random rnd = new Random();
-            air = new Air(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Red, Color.Blue, true, true);
-            air.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxAir.Width, pictureBoxAir.Height);
+            air = new Air(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Black);
+            air.SetPosition(rnd.Next(10, 300), rnd.Next(minpos, 200), pictureBoxAir.Width, pictureBoxAir.Height);
             Draw();
         }
         /// <summary>
@@ -57,6 +57,15 @@ namespace TPGurin
                     air.MoveTransport(Direction.Right);
                     break;
             }
+            Draw();
+        }
+
+        private void buttonCreateAir_Click(object sender, EventArgs e)
+        {
+            int minpos = 47;
+            Random rnd = new Random();
+            air = new SuperAir(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.DarkCyan, Color.DarkGray, true, 3);
+            air.SetPosition(rnd.Next(10, 100), rnd.Next(minpos, 100), pictureBoxAir.Width, pictureBoxAir.Height);
             Draw();
         }
     }
