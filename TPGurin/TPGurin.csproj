@@ -77,6 +77,7 @@
     </Compile>
     <Compile Include="IAir.cs" />
     <Compile Include="MultiLevelAirdrom.cs" />
+    <Compile Include="ParkingAlreadyHaveException.cs" />
     <Compile Include="ParkingNotFoundException.cs" />
     <Compile Include="ParkingOccupiedPlaceException.cs" />
     <Compile Include="ParkingOverflowException.cs" />

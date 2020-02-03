@@ -97,5 +97,89 @@ namespace TPGurin
         {
             return base.ToString() + ";" + DopColor.Name + ";" + Board + ";" + Turbines;
         }
+        /// <summary>
+        /// Метод интерфейса IComparable для класса SuperAir
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public int CompareTo(SuperAir other)
+        {
+            var res = (this is Air).CompareTo(other is Air);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (DopColor != other.DopColor)
+            {
+                DopColor.Name.CompareTo(other.DopColor.Name);
+            }
+            if (Board != other.Board)
+            {
+                return Board.CompareTo(other.Board);
+            }
+            if (Turbines != other.Turbines)
+            {
+                return Turbines.CompareTo(other.Turbines);
+            }
+            return 0;
+        }
+        /// <summary>
+        /// Метод интерфейса IEquatable для класса SuperAir
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(SuperAir other)
+        {
+            var res = (this as Air).Equals(other as Air);
+            if (!res)
+            {
+                return res;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (Board != other.Board)
+            {
+                return false;
+            }
+            if (Turbines != other.Turbines)
+            {
+                return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// Перегрузка метода от object
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is SuperAir airObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(airObj);
+            }
+        }
+        /// <summary>
+        /// Перегрузка метода от object
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

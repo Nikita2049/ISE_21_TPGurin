@@ -30,11 +30,13 @@
         {
             this.pictureBoxPort = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBoxTake = new System.Windows.Forms.PictureBox();
             this.buttonGetAir = new System.Windows.Forms.Button();
             this.maskedTextBoxSpot = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.listBoxlevels = new System.Windows.Forms.ListBox();
             this.buttonSetAir = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,8 +44,7 @@
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFilePort = new System.Windows.Forms.OpenFileDialog();
             this.saveFilePort = new System.Windows.Forms.SaveFileDialog();
-            this.listBoxlevels = new System.Windows.Forms.ListBox();
-
+            this.buttonForSort = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPort)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
@@ -52,53 +53,56 @@
             // 
             // pictureBoxPort
             // 
-            this.pictureBoxPort.Location = new System.Drawing.Point(0, 57);
-            this.pictureBoxPort.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxPort.Location = new System.Drawing.Point(0, 70);
             this.pictureBoxPort.Name = "pictureBoxPort";
-            this.pictureBoxPort.Size = new System.Drawing.Size(678, 424);
+            this.pictureBoxPort.Size = new System.Drawing.Size(958, 522);
             this.pictureBoxPort.TabIndex = 0;
             this.pictureBoxPort.TabStop = false;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.pictureBoxTake);
             this.groupBox1.Controls.Add(this.buttonGetAir);
             this.groupBox1.Controls.Add(this.maskedTextBoxSpot);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(723, 193);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Location = new System.Drawing.Point(964, 237);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(171, 205);
+            this.groupBox1.Size = new System.Drawing.Size(228, 252);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(116, 17);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Забрать самолет с";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 37);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(6, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 13);
+            this.label2.Size = new System.Drawing.Size(0, 17);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Забрать самолет с";
             // 
             // pictureBoxTake
             // 
-            this.pictureBoxTake.Location = new System.Drawing.Point(4, 87);
-            this.pictureBoxTake.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxTake.Location = new System.Drawing.Point(6, 107);
             this.pictureBoxTake.Name = "pictureBoxTake";
-            this.pictureBoxTake.Size = new System.Drawing.Size(171, 117);
+            this.pictureBoxTake.Size = new System.Drawing.Size(228, 144);
             this.pictureBoxTake.TabIndex = 3;
             this.pictureBoxTake.TabStop = false;
             // 
             // buttonGetAir
             // 
-            this.buttonGetAir.Location = new System.Drawing.Point(35, 55);
-            this.buttonGetAir.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonGetAir.Location = new System.Drawing.Point(54, 68);
             this.buttonGetAir.Name = "buttonGetAir";
-            this.buttonGetAir.Size = new System.Drawing.Size(61, 27);
+            this.buttonGetAir.Size = new System.Drawing.Size(75, 33);
             this.buttonGetAir.TabIndex = 2;
             this.buttonGetAir.Text = "Забрать";
             this.buttonGetAir.UseVisualStyleBackColor = true;
@@ -106,38 +110,35 @@
             // 
             // maskedTextBoxSpot
             // 
-            this.maskedTextBoxSpot.Location = new System.Drawing.Point(112, 37);
-            this.maskedTextBoxSpot.Margin = new System.Windows.Forms.Padding(2);
+            this.maskedTextBoxSpot.Location = new System.Drawing.Point(135, 46);
             this.maskedTextBoxSpot.Name = "maskedTextBoxSpot";
-            this.maskedTextBoxSpot.Size = new System.Drawing.Size(38, 20);
+            this.maskedTextBoxSpot.Size = new System.Drawing.Size(50, 22);
             this.maskedTextBoxSpot.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 37);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(69, 46);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
+            this.label1.Size = new System.Drawing.Size(53, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Место:";
             // 
             // listBoxlevels
             // 
             this.listBoxlevels.FormattingEnabled = true;
-            this.listBoxlevels.Location = new System.Drawing.Point(788, 32);
-            this.listBoxlevels.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxlevels.ItemHeight = 16;
+            this.listBoxlevels.Location = new System.Drawing.Point(1051, 39);
             this.listBoxlevels.Name = "listBoxlevels";
-            this.listBoxlevels.Size = new System.Drawing.Size(91, 69);
+            this.listBoxlevels.Size = new System.Drawing.Size(120, 84);
             this.listBoxlevels.TabIndex = 4;
-            this.listBoxlevels.SelectedIndexChanged += new System.EventHandler(this.listBoxlevels_SelectedIndexChanged);
+            this.listBoxlevels.SelectedIndexChanged += new System.EventHandler(this.listBox1levels_SelectedIndexChanged);
             // 
             // buttonSetAir
             // 
-            this.buttonSetAir.Location = new System.Drawing.Point(772, 134);
-            this.buttonSetAir.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSetAir.Location = new System.Drawing.Point(1029, 129);
             this.buttonSetAir.Name = "buttonSetAir";
-            this.buttonSetAir.Size = new System.Drawing.Size(106, 38);
+            this.buttonSetAir.Size = new System.Drawing.Size(142, 38);
             this.buttonSetAir.TabIndex = 5;
             this.buttonSetAir.Text = "Заказать самолет";
             this.buttonSetAir.UseVisualStyleBackColor = true;
@@ -150,8 +151,7 @@
             this.файлToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(911, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1215, 28);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -163,20 +163,20 @@
             this.сохранитьToolStripMenuItem,
             this.загрузитьToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(158, 26);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
             // загрузитьToolStripMenuItem
             // 
             this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
-            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(158, 26);
             this.загрузитьToolStripMenuItem.Text = "Загрузить";
             this.загрузитьToolStripMenuItem.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click);
             // 
@@ -189,18 +189,28 @@
             // 
             this.saveFilePort.Filter = "txt file | *.txt";
             // 
+            // buttonForSort
+            // 
+            this.buttonForSort.Location = new System.Drawing.Point(1029, 182);
+            this.buttonForSort.Name = "buttonForSort";
+            this.buttonForSort.Size = new System.Drawing.Size(142, 30);
+            this.buttonForSort.TabIndex = 7;
+            this.buttonForSort.Text = "Сортировка";
+            this.buttonForSort.UseVisualStyleBackColor = true;
+            this.buttonForSort.Click += new System.EventHandler(this.buttonForSort_Click);
+            // 
             // FormAirdrom
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(911, 491);
+            this.ClientSize = new System.Drawing.Size(1215, 604);
+            this.Controls.Add(this.buttonForSort);
             this.Controls.Add(this.buttonSetAir);
             this.Controls.Add(this.listBoxlevels);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBoxPort);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormAirdrom";
             this.Text = "FormAirdrom";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPort)).EndInit();
@@ -211,7 +221,6 @@
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -223,6 +232,7 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBoxSpot;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox listBoxlevels;
         private System.Windows.Forms.Button buttonSetAir;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -231,5 +241,6 @@
         private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFilePort;
         private System.Windows.Forms.SaveFileDialog saveFilePort;
+        private System.Windows.Forms.Button buttonForSort;
     }
 }

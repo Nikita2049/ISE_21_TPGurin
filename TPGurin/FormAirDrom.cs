@@ -14,7 +14,7 @@ namespace TPGurin
     public partial class FormAirDrom : Form
     {
         /// <summary>
-        /// Объект от класса многоуровневой аэропорта
+        /// Объект от класса многоуровневого порта
         /// </summary>
         MultiLevelAirdrom parking;
         FormAirConfig form;
@@ -29,7 +29,8 @@ namespace TPGurin
             InitializeComponent();
             logger = LogManager.GetCurrentClassLogger();
             error = LogManager.GetCurrentClassLogger();
-            parking = new MultiLevelAirdrom(countLevel, pictureBoxPort.Width, pictureBoxPort.Height);
+            parking = new MultiLevelAirdrom(countLevel, pictureBoxPort.Width,
+           pictureBoxPort.Height);
             //заполнение listBox
             for (int i = 0; i < countLevel; i++)
             {
@@ -38,7 +39,7 @@ namespace TPGurin
             listBoxlevels.SelectedIndex = 0;
         }
         /// <summary>
-        /// Метод отрисовки аэропорта
+        /// Метод отрисовки порта
         /// </summary>
         private void Draw()
         {
@@ -65,9 +66,13 @@ namespace TPGurin
                 }
                 catch (ParkingOverflowException ex)
                 {
-
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     error.Error(ex.Message);
+                }
+                catch (ParkingAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK,
+                       MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
@@ -126,7 +131,14 @@ namespace TPGurin
             }
         }
 
-        private void listBoxlevels_SelectedIndexChanged(object sender, EventArgs e)
+        private void buttonForSort_Click(object sender, EventArgs e)
+        {
+            parking.Sort();
+            Draw();
+            logger.Info("Сортировка уровней");
+        }
+
+        private void listBox1levels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
         }

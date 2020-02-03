@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TPGurin
 {
-    public class Port<T> where T : class, IAir
+    public class Port<T> : IEnumerator<T>, IEnumerable<T>, IComparable<Port<T>> where T : class, IAir
     {
         /// <summary>
         /// Массив объектов, которые храним
@@ -35,17 +35,29 @@ namespace TPGurin
         /// </summary>
         private const int _placeSizeHeight = 85;
         /// <summary>
+        /// Текущий элемент для вывода через IEnumerator (будет обращаться по своему индексу к ключу словаря, по которму будет возвращаться запись)
+        /// </summary>
+        private int _currentIndex;
+        public int GetKey
+        {
+            get
+            {
+                return _places.Keys.ToList()[_currentIndex];
+            }
+        }
+        /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="sizes">Количество мест в порту</param>
-        /// <param name="pictureWidth">Рамзер порта - ширина</param>
-        /// <param name="pictureHeight">Рамзер порта - высота</param>
+        /// <param name="pictureWidth">Размер порта - ширина</param>
+        /// <param name="pictureHeight">Размер порта - высота</param>
         public Port(int sizes, int pictureWidth, int pictureHeight)
         {
             _maxCount = sizes;
             _places = new Dictionary<int, T>();
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
+            _currentIndex = -1;
         }
         /// <summary>
         /// Перегрузка оператора сложения
@@ -54,17 +66,21 @@ namespace TPGurin
         /// <param name="p">Порт</param>
         /// <param name="air">Добавляемое судно</param>
         /// <returns></returns>
-        public static int operator +(Port<T> p, T ship)
+        public static int operator +(Port<T> p, T air)
         {
             if (p._places.Count == p._maxCount)
             {
                 throw new ParkingOverflowException();
             }
+            if (p._places.ContainsValue(air))
+            {
+                throw new ParkingAlreadyHaveException();
+            }
             for (int i = 0; i < p._maxCount; i++)
             {
                 if (p.CheckFreePlace(i))
                 {
-                    p._places.Add(i, ship);
+                    p._places.Add(i, air);
                     p._places[i].SetPosition(5 + i / 5 * _placeSizeWidth + 15,
                      i % 5 * _placeSizeHeight + 55, p.PictureWidth,
                     p.PictureHeight);
@@ -75,10 +91,10 @@ namespace TPGurin
         }
         /// <summary>
         /// Перегрузка оператора вычитания
-        /// Логика действия: с порта забираем судно
+        /// Логика действия: из порта забираем судно
         /// </summary>
         /// <param name="p">Порт</param>
-        /// <param name="index">Индекс места, с которого пытаемся извлечь     
+        /// <param name="index">Индекс места, с которого пытаемся извлечь
         /// <returns></returns>
         public static T operator -(Port<T> p, int index)
         {
@@ -93,12 +109,13 @@ namespace TPGurin
         /// <summary>
         /// Метод проверки заполнености парковочного места (ячейки массива)
         /// </summary>
-        /// <param name="index">Номер парковочного места (порядковый номер в
+        /// <param name="index">Номер парковочного места (порядковый номер в массиве) 
         /// <returns></returns>
         private bool CheckFreePlace(int index)
         {
             return !_places.ContainsKey(index);
         }
+
         public T GetAirByKey(int key)
         {
             return _places.ContainsKey(key) ? _places[key] : null;
@@ -123,7 +140,7 @@ namespace TPGurin
         private void DrawMarking(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 3);
-            //границы праковки
+            //границы паpковки
             g.DrawRectangle(pen, 0, 0, (_maxCount / 5) * _placeSizeWidth, 480);
             for (int i = 0; i < _maxCount / 5; i++)
             {//отрисовываем, по 5 мест на линии
@@ -159,6 +176,110 @@ namespace TPGurin
                 }
             }
         }
-
+        /// <summary>
+        /// Метод интерфейса IEnumerator для получения текущего элемента
+        /// </summary>
+        public T Current
+        {
+            get
+            {
+                return _places[_places.Keys.ToList()[_currentIndex]];
+            }
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerator для получения текущего элемента
+        /// </summary>
+        object IEnumerator.Current
+        {
+            get
+            {
+                return Current;
+            }
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerator, вызываемый при удалении объекта
+        /// </summary>
+        public void Dispose()
+        {
+            _places.Clear();
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerator для перехода к следующему элементу или началу коллекции
+        /// </summary>
+        /// <returns></returns>
+        public bool MoveNext()
+        {
+            if (_currentIndex + 1 >= _places.Count)
+            {
+                Reset();
+                return false;
+            }
+            _currentIndex++;
+            return true;
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerator для сброса и возврата к началу коллекции
+        /// </summary>
+        public void Reset()
+        {
+            _currentIndex = -1;
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerable
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerable
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+        /// <summary>
+        /// Метод интерфейса IComparable
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public int CompareTo(Port<T> other)
+        {
+            if (_places.Count > other._places.Count)
+            {
+                return -1;
+            }
+            else if (_places.Count < other._places.Count)
+            {
+                return 1;
+            }
+            else if (_places.Count > 0)
+            {
+                var thisKeys = _places.Keys.ToList();
+                var otherKeys = other._places.Keys.ToList();
+                for (int i = 0; i < _places.Count; ++i)
+                {
+                    if (_places[thisKeys[i]] is Air && other._places[thisKeys[i]] is SuperAir)
+                    {
+                        return 1;
+                    }
+                    if (_places[thisKeys[i]] is SuperAir && other._places[thisKeys[i]] is Air)
+                    {
+                        return -1;
+                    }
+                    if (_places[thisKeys[i]] is Air && other._places[thisKeys[i]] is Air)
+                    {
+                        return (_places[thisKeys[i]] is Air).CompareTo(other._places[thisKeys[i]] is Air);
+                    }
+                    if (_places[thisKeys[i]] is SuperAir && other._places[thisKeys[i]] is SuperAir)
+                    {
+                        return (_places[thisKeys[i]] is SuperAir).CompareTo(other._places[thisKeys[i]] is SuperAir);
+                    }
+                }
+            }
+            return 0;
+        }
     }
 }
