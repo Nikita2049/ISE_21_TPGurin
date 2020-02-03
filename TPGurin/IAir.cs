@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TPGurin
 {
-    interface IAir
+    public interface IAir
     {
         void SetPosition(int x, int y, int width, int height);
         void MoveTransport(Direction direction);

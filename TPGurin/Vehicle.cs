@@ -9,11 +9,11 @@ namespace TPGurin
 {
     public abstract class Vehicle : IAir
     {
-        public static float _startPosX;
+        protected float _startPosX;
         /// <summary>
         /// Правая кооридната отрисовки самолета
         /// </summary>
-        public static float _startPosY;
+        protected float _startPosY;
         /// <summary>
         /// Ширина окна отрисовки
         /// </summary>
@@ -34,6 +34,8 @@ namespace TPGurin
         /// Основной цвет кузова
         /// </summary>
         public Color MainColor { protected set; get; }
+
+        public bool Chassis { protected set; get; }
 
         public void SetPosition(int x, int y, int width, int height)
         {

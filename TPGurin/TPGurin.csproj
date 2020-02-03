@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Air.cs" />
+    <Compile Include="Airdrom.cs" />
     <Compile Include="AirForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +55,12 @@
       <DependentUpon>AirForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Direction.cs" />
+    <Compile Include="FormAirDrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAirDrom.Designer.cs">
+      <DependentUpon>FormAirDrom.cs</DependentUpon>
+    </Compile>
     <Compile Include="IAir.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

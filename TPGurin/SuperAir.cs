@@ -30,58 +30,48 @@ namespace TPGurin
 
             if (Board)
             {
-                g.FillRectangle(main, _startPosX + 10, _startPosY - 1, 250, 62);
-                g.FillEllipse(main, _startPosX + 230, _startPosY - 1, 70, 62);
-                g.FillEllipse(main, _startPosX + 220, _startPosY + 22, 100, 38);
-                g.FillEllipse(dop, _startPosX - 35, _startPosY - 1, 120, 62);
-                g.FillRectangle(dop, _startPosX + 5, _startPosY - 55, 40, 65);
-                g.FillEllipse(dop, _startPosX - 35, _startPosY - 1, 120, 62);
-                g.FillEllipse(dop, _startPosX + 15, _startPosY - 55, 50, 100);
-                g.FillEllipse(dop, _startPosX - 25, _startPosY + 20, 70, 10);
-                g.DrawEllipse(pen, _startPosX - 25, _startPosY + 20, 70, 10);
+                g.FillRectangle(main, _startPosX + 10, _startPosY - 10, 110, 25);
+                g.FillEllipse(main, _startPosX + 108, _startPosY - 10, 25, 25);
+                g.FillEllipse(main, _startPosX + 100, _startPosY + 5, 45, 10);
+                g.FillEllipse(dop, _startPosX - 12, _startPosY - 10, 45, 25);
+                g.FillRectangle(dop, _startPosX + 3, _startPosY - 30, 25, 30);
+                g.FillEllipse(dop, _startPosX + 14, _startPosY - 30, 25, 40);
+                g.FillEllipse(dop, _startPosX - 5, _startPosY + 3, 20, 5);
             }
             switch (Turbines)
             {
                 case 1:
-                    g.FillRectangle(dop, _startPosX + 140, _startPosY + 56, 40, 25);
-                    g.DrawRectangle(pen, _startPosX + 140, _startPosY + 56, 40, 25);
-                    g.FillRectangle(dop, _startPosX + 180, _startPosY + 59, 10, 20);
-                    g.DrawRectangle(pen, _startPosX + 180, _startPosY + 59, 5, 20);
-                    g.FillRectangle(dop, _startPosX + 135, _startPosY + 59, 10, 20);
-                    g.DrawRectangle(pen, _startPosX + 140, _startPosY + 59, 5, 20);
+                    g.FillRectangle(main, _startPosX + 65, _startPosY + 10, 16, 6);
+                    g.DrawRectangle(pen, _startPosX + 65, _startPosY + 10, 16, 6);
+                    g.FillRectangle(main, _startPosX + 60, _startPosY + 11, 5, 4);
+                    g.DrawRectangle(pen, _startPosX + 60, _startPosY + 11, 5, 4);
+                    g.FillRectangle(main, _startPosX + 80, _startPosY + 11, 5, 4);
+                    g.DrawRectangle(pen, _startPosX + 80, _startPosY + 11, 5, 4);
                     Pen pen1 = new Pen(Color.Black);
                     break;
                 case 2:
-                    g.FillRectangle(dop, _startPosX + 100, _startPosY + 56, 40, 25);
-                    g.DrawRectangle(pen, _startPosX + 100, _startPosY + 56, 40, 25);
-                    g.FillRectangle(dop, _startPosX + 95, _startPosY + 59, 10, 20);
-                    g.DrawRectangle(pen, _startPosX + 95, _startPosY + 59, 5, 20);
-                    g.FillRectangle(dop, _startPosX + 135, _startPosY + 59, 10, 20);
-                    g.DrawRectangle(pen, _startPosX + 140, _startPosY + 59, 5, 20);
+                    g.FillRectangle(main, _startPosX + 65, _startPosY + 10, 16, 6);
+                    g.DrawRectangle(pen, _startPosX + 65, _startPosY + 10, 16, 6);
+                    g.FillRectangle(main, _startPosX + 60, _startPosY + 11, 5, 4);
+                    g.DrawRectangle(pen, _startPosX + 60, _startPosY + 11, 5, 4);
+                    g.FillRectangle(main, _startPosX + 80, _startPosY + 11, 5, 4);
+                    g.DrawRectangle(pen, _startPosX + 80, _startPosY + 11, 5, 4);
                     Pen pen2 = new Pen(Color.Black);
                     break;
             }
             base.DrawAir(g);
-            g.FillEllipse(lblue, _startPosX + 220, _startPosY + 12, 8, 8);
-            g.DrawEllipse(pen, _startPosX + 220, _startPosY + 12, 8, 8);
-            g.FillEllipse(lblue, _startPosX + 210, _startPosY + 12, 8, 8);
-            g.DrawEllipse(pen, _startPosX + 210, _startPosY + 12, 8, 8);
-            g.FillEllipse(lblue, _startPosX + 200, _startPosY + 12, 8, 8);
-            g.DrawEllipse(pen, _startPosX + 200, _startPosY + 12, 8, 8);
-            g.FillEllipse(lblue, _startPosX + 190, _startPosY + 12, 8, 8);
-            g.DrawEllipse(pen, _startPosX + 190, _startPosY + 12, 8, 8);
-            g.FillEllipse(lblue, _startPosX + 180, _startPosY + 12, 8, 8);
-            g.DrawEllipse(pen, _startPosX + 180, _startPosY + 12, 8, 8);
-            g.FillEllipse(lblue, _startPosX + 170, _startPosY + 12, 8, 8);
-            g.DrawEllipse(pen, _startPosX + 170, _startPosY + 12, 8, 8);
-            g.FillEllipse(lblue, _startPosX + 160, _startPosY + 12, 8, 8);
-            g.DrawEllipse(pen, _startPosX + 160, _startPosY + 12, 8, 8);
-            g.FillEllipse(lblue, _startPosX + 150, _startPosY + 12, 8, 8);
-            g.DrawEllipse(pen, _startPosX + 150, _startPosY + 12, 8, 8);
-            g.FillEllipse(lblue, _startPosX + 140, _startPosY + 12, 8, 8);
-            g.DrawEllipse(pen, _startPosX + 140, _startPosY + 12, 8, 8);
-            g.FillEllipse(lblue, _startPosX + 130, _startPosY + 12, 8, 8);
-            g.DrawEllipse(pen, _startPosX + 130, _startPosY + 12, 8, 8);
+            g.FillEllipse(dop, _startPosX + 40, _startPosY - 5, 7, 7);
+            g.DrawEllipse(pen, _startPosX + 40, _startPosY - 5, 7, 7);
+            g.FillEllipse(dop, _startPosX + 50, _startPosY - 5, 7, 7);
+            g.DrawEllipse(pen, _startPosX + 50, _startPosY - 5, 7, 7);
+            g.FillEllipse(dop, _startPosX + 60, _startPosY - 5, 7, 7);
+            g.DrawEllipse(pen, _startPosX + 60, _startPosY - 5, 7, 7);
+            g.FillEllipse(dop, _startPosX + 70, _startPosY - 5, 7, 7);
+            g.DrawEllipse(pen, _startPosX + 70, _startPosY - 5, 7, 7);
+            g.FillEllipse(dop, _startPosX + 80, _startPosY - 5, 7, 7);
+            g.DrawEllipse(pen, _startPosX + 80, _startPosY - 5, 7, 7);
+            g.FillEllipse(dop, _startPosX + 90, _startPosY - 5, 7, 7);
+            g.DrawEllipse(pen, _startPosX + 90, _startPosY - 5, 7, 7);
         }
     }
 }

@@ -11,11 +11,11 @@ namespace TPGurin
     {
         /// Ширина отрисовки самолета
         /// </summary>
-        protected const int airWidth = 150;
+        protected const int airWidth = 90;
         /// <summary>
         /// Ширина отрисовки самолета
         /// </summary>
-        protected const int airHeight = 10;
+        protected const int airHeight = 1;
         /// <summary>
         /// Максимальная скорость
         /// </summary>
@@ -71,7 +71,6 @@ namespace TPGurin
         {
             Pen pen = new Pen(Color.Black);
             Brush white = new SolidBrush(Color.White);
-            Brush bottom = new SolidBrush(MainColor);
             Brush brBlack = new SolidBrush(Color.Black);
             Brush main = new SolidBrush(MainColor);
             Brush lblue = new SolidBrush(Color.LightBlue);
@@ -79,51 +78,57 @@ namespace TPGurin
             Brush gray = new SolidBrush(Color.Gray);
 
             // Корпус
-            g.FillRectangle(white, _startPosX + 10, _startPosY - 1, 250, 62);
-            g.FillEllipse(white, _startPosX + 230, _startPosY - 1, 70, 62);
-            g.FillEllipse(white, _startPosX + 220, _startPosY + 22, 100, 38);
-            g.FillEllipse(main, _startPosX - 35, _startPosY - 1, 120, 62);
-            g.FillRectangle(main, _startPosX + 5, _startPosY - 55, 40, 65);
-            g.FillEllipse(main, _startPosX - 35, _startPosY - 1, 120, 62);
-            g.FillEllipse(main, _startPosX + 15, _startPosY - 55, 50, 100);
-            g.FillEllipse(main, _startPosX - 25, _startPosY + 20, 70, 10);
+            g.DrawRectangle(pen, _startPosX + 10, _startPosY - 10, 110, 25);
+            g.DrawEllipse(pen, _startPosX + 108, _startPosY - 10, 25, 25);
+            g.DrawEllipse(pen, _startPosX + 100, _startPosY + 5, 45, 10);
+            g.DrawEllipse(pen, _startPosX - 12, _startPosY - 10, 45, 25);
+            g.DrawRectangle(pen, _startPosX + 3, _startPosY - 30, 25, 30);
+            g.DrawEllipse(pen, _startPosX + 14, _startPosY - 30, 25, 40);
+            g.DrawEllipse(pen, _startPosX - 5, _startPosY + 3, 20, 5);
+            g.FillRectangle(white, _startPosX + 10, _startPosY - 10, 110, 25);
+            g.FillEllipse(white, _startPosX + 108, _startPosY - 10, 25, 25);
+            g.FillEllipse(white, _startPosX + 100, _startPosY + 5, 45, 10);
+            g.FillEllipse(main, _startPosX - 12, _startPosY - 10, 45, 25);
+            g.FillRectangle(main, _startPosX + 3, _startPosY - 30, 25, 30);
+            g.FillEllipse(main, _startPosX + 14, _startPosY - 30, 25, 40);
+            g.FillEllipse(main, _startPosX - 5, _startPosY + 3, 20, 5);
 
             // Крылья
-            g.FillRectangle(white, _startPosX + 100, _startPosY + 50, 100, 7);
-            g.DrawRectangle(pen, _startPosX + 100, _startPosY + 50, 100, 7);
-            g.FillRectangle(white, _startPosX + 80, _startPosY + 35, 25, 20);
-            g.DrawRectangle(pen, _startPosX + 80, _startPosY + 35, 25, 20);
+            g.FillRectangle(main, _startPosX + 50, _startPosY + 8, 40, 2);
+            g.DrawRectangle(pen, _startPosX + 50, _startPosY + 8, 40, 2);
+            g.FillRectangle(main, _startPosX + 45, _startPosY + 5, 10, 7);
+            g.DrawRectangle(pen, _startPosX + 45, _startPosY + 5, 10, 7);
 
             // Дверь
-            g.FillRectangle(white, _startPosX + 235, _startPosY + 15, 15, 25);
-            g.DrawRectangle(pen, _startPosX + 235, _startPosY + 15, 15, 25);
+            g.FillRectangle(main, _startPosX + 105, _startPosY - 2, 8, 13);
+            g.DrawRectangle(pen, _startPosX + 105, _startPosY - 2, 8, 13);
 
             // Передние стекла
-            g.FillRectangle(lblue, _startPosX + 280, _startPosY + 10, 10, 10);
-            g.DrawRectangle(pen, _startPosX + 280, _startPosY + 10, 10, 10);
-            g.FillRectangle(lblue, _startPosX + 265, _startPosY + 10, 10, 10);
-            g.DrawRectangle(pen, _startPosX + 265, _startPosY + 10, 10, 10);
+            g.FillRectangle(lblue, _startPosX + 125, _startPosY - 4, 5, 5);
+            g.DrawRectangle(pen, _startPosX + 125, _startPosY - 4, 5, 5);
+            g.FillRectangle(lblue, _startPosX + 118, _startPosY - 4, 5, 5);
+            g.DrawRectangle(pen, _startPosX + 118, _startPosY - 4, 5, 5);
 
             // Турбина
-            g.FillRectangle(dred, _startPosX + 125, _startPosY + 50, 40, 25);
-            g.DrawRectangle(pen, _startPosX + 125, _startPosY + 50, 40, 25);
-            g.FillRectangle(gray, _startPosX + 115, _startPosY + 53, 10, 20);
-            g.DrawRectangle(pen, _startPosX + 165, _startPosY + 53, 5, 20);
-            g.FillRectangle(gray, _startPosX + 115, _startPosY + 53, 10, 20);
-            g.DrawRectangle(pen, _startPosX + 165, _startPosY + 53, 5, 20);
+            g.FillRectangle(dred, _startPosX + 65, _startPosY + 10, 16, 6);
+            g.DrawRectangle(pen, _startPosX + 65, _startPosY + 10, 16, 6);
+            g.FillRectangle(gray, _startPosX + 60, _startPosY + 11, 5, 4);
+            g.DrawRectangle(pen, _startPosX + 60, _startPosY + 11, 5, 4);
+            g.FillRectangle(gray, _startPosX + 80, _startPosY + 11, 5, 4);
+            g.DrawRectangle(pen, _startPosX + 80, _startPosY + 11, 5, 4);
 
             // Шасси
-            g.FillRectangle(white, _startPosX + 250, _startPosY + 60, 15, 10);
-            g.DrawRectangle(pen, _startPosX + 250, _startPosY + 60, 15, 10);
-            g.FillRectangle(white, _startPosX + 255, _startPosY + 70, 5, 8);
-            g.DrawRectangle(pen, _startPosX + 255, _startPosY + 70, 5, 8);
-            g.FillRectangle(white, _startPosX + 40, _startPosY + 60, 15, 10);
-            g.DrawRectangle(pen, _startPosX + 40, _startPosY + 60, 15, 10);
-            g.FillRectangle(white, _startPosX + 45, _startPosY + 70, 5, 8);
-            g.DrawRectangle(pen, _startPosX + 45, _startPosY + 70, 5, 8);
-            g.FillEllipse(brBlack, _startPosX + 250, _startPosY + 75, 15, 15);
-            g.FillEllipse(brBlack, _startPosX + 45, _startPosY + 75, 15, 15);
-            g.FillEllipse(brBlack, _startPosX + 35, _startPosY + 75, 15, 15);
+            g.FillRectangle(white, _startPosX + 105, _startPosY + 15, 8, 4);
+            g.DrawRectangle(pen, _startPosX + 105, _startPosY + 15, 8, 4);
+            g.FillRectangle(white, _startPosX + 107, _startPosY + 19, 3, 4);
+            g.DrawRectangle(pen, _startPosX + 107, _startPosY + 19, 3, 4);
+            g.FillRectangle(white, _startPosX + 20, _startPosY + 15, 8, 4);
+            g.DrawRectangle(pen, _startPosX + 20, _startPosY + 15, 8, 4);
+            g.FillRectangle(white, _startPosX + 22, _startPosY + 19, 3, 4);
+            g.DrawRectangle(pen, _startPosX + 22, _startPosY + 19, 3, 4);
+            g.FillEllipse(brBlack, _startPosX + 105, _startPosY + 22, 7, 7);
+            g.FillEllipse(brBlack, _startPosX + 18, _startPosY + 22, 7, 7);
+            g.FillEllipse(brBlack, _startPosX + 23, _startPosY + 22, 7, 7);
         }
     }
 }
