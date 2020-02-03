@@ -12,74 +12,116 @@ namespace TPGurin
 {
     public partial class FormAirDrom : Form
     {
-        Port<IAir> parking;
+        /// <summary>
+        /// Объект от класса многоуровневого порта
+        /// </summary>
+        MultiLevelAirdrom band;
+        /// <summary>
+        /// Количество уровней-парковок
+        /// </summary>
+        private const int countLevel = 5;
         public FormAirDrom()
         {
             InitializeComponent();
-            parking = new Port<IAir>(20, pictureBoxPort.Width, pictureBoxPort.Height);
-            Draw();
+            band = new MultiLevelAirdrom(countLevel, pictureBoxAirdrom.Width,
+           pictureBoxAirdrom.Height);
+            //заполнение listBox
+            for (int i = 0; i < countLevel; i++)
+            {
+                listBoxlevels.Items.Add("Уровень " + (i + 1));
+            }
+            listBoxlevels.SelectedIndex = 0;
         }
-
-
         /// <summary>
-        /// Метод отрисовки парковки
+        /// Метод отрисовки порта
         /// </summary>
         private void Draw()
         {
-            Bitmap bmp = new Bitmap(pictureBoxPort.Width, pictureBoxPort.Height);
-            Graphics gr = Graphics.FromImage(bmp);
-            parking.Draw(gr);
-            pictureBoxPort.Image = bmp;
-        }
-
-        private void buttonCreateAir_Click(object sender, EventArgs e)
-        {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (listBoxlevels.SelectedIndex > -1)
             {
-                var air = new Air(100, 1000, dialog.Color);
-                int place = parking + air;
-                Draw();
+                //если выбран один из пуктов в listBox (при старте программы ни один пункт не будет выбран и может возникнуть ошибка, если мы попытаемся обратиться к элементу listBox)
+                Bitmap bmp = new Bitmap(pictureBoxAirdrom.Width,
+               pictureBoxAirdrom.Height);
+                Graphics gr = Graphics.FromImage(bmp);
+                band[listBoxlevels.SelectedIndex].Draw(gr);
+                pictureBoxAirdrom.Image = bmp;
             }
-
         }
-
-        private void buttonCreateSuperAir_Click(object sender, EventArgs e)
+        /// Обработка нажатия кнопки "Посадить самолет"
+        private void buttonLocateAir_Click(object sender, EventArgs e)
         {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (listBoxlevels.SelectedIndex > -1)
             {
-                ColorDialog dialogDop = new ColorDialog();
-                if (dialogDop.ShowDialog() == DialogResult.OK)
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    var air = new SuperAir(100, 1000, dialog.Color, dialogDop.Color, true, 2);
-                    int place = parking + air;
+                    var air = new Air(100, 1000, dialog.Color);
+                    int place = band[listBoxlevels.SelectedIndex] + air;
+                    if (place == -1)
+                    {
+                        MessageBox.Show("Нет свободных мест", "Ошибка",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     Draw();
                 }
             }
         }
-
-        private void buttonTakeAir_Click(object sender, EventArgs e)
+        /// Обработка нажатия кнопки "Посадить аэробус"
+        private void buttonLocateAirbus_Click(object sender, EventArgs e)
         {
-            if (maskedTextBoxAirdrom.Text != "")
+            if (listBoxlevels.SelectedIndex > -1)
             {
-                var air = parking - Convert.ToInt32(maskedTextBoxAirdrom.Text);
-                if (air != null)
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
-                    Graphics gr = Graphics.FromImage(bmp);
-                    air.SetPosition(15, 55, pictureBoxTake.Width, pictureBoxTake.Height);
-                    air.DrawAir(gr);
-                    pictureBoxTake.Image = bmp;
+                    ColorDialog dialogDop = new ColorDialog();
+                    if (dialogDop.ShowDialog() == DialogResult.OK)
+                    {
+                        var air = new SuperAir(100, 1000, dialog.Color,
+                       dialogDop.Color, true, 2);
+                        int place = band[listBoxlevels.SelectedIndex] + air;
+                        if (place == -1)
+                        {
+                            MessageBox.Show("Нет свободных мест", "Ошибка",
+                           MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        Draw();
+                    }
                 }
-                else
-                {
-                    Bitmap bmp = new Bitmap(pictureBoxTake.Width,
-                   pictureBoxTake.Height);
-                    pictureBoxTake.Image = bmp;
-                }
-                Draw();
             }
+        }
+        /// Обработка нажатия кнопки "Забрать"
+        private void buttonGetAir_Click(object sender, EventArgs e)
+        {
+            if (listBoxlevels.SelectedIndex > -1)
+            {
+                if (maskedTextBoxSpot.Text != "")
+                {
+                    var air = band[listBoxlevels.SelectedIndex] -
+                   Convert.ToInt32(maskedTextBoxSpot.Text);
+                    if (air != null)
+                    {
+                        Bitmap bmp = new Bitmap(pictureBoxTake.Width,
+                       pictureBoxTake.Height);
+                        Graphics gr = Graphics.FromImage(bmp);
+                        air.SetPosition(15, 55, pictureBoxTake.Width,
+                       pictureBoxTake.Height);
+                        air.DrawAir(gr);
+                        pictureBoxTake.Image = bmp;
+                    }
+                    else
+                    {
+                        Bitmap bmp = new Bitmap(pictureBoxTake.Width,
+                       pictureBoxTake.Height);
+                        pictureBoxTake.Image = bmp;
+                    }
+                    Draw();
+                }
+            }
+        }
+        private void listBoxlevels_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Draw();
         }
     }
 }
