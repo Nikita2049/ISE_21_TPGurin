@@ -55,7 +55,7 @@
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(93, 24);
             this.buttonCreate.TabIndex = 1;
-            this.buttonCreate.Text = "Создать";
+            this.buttonCreate.Text = "Создать самолет";
             this.buttonCreate.UseVisualStyleBackColor = true;
             this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
@@ -110,9 +110,9 @@
             this.buttonCreateAir.Location = new System.Drawing.Point(121, 10);
             this.buttonCreateAir.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCreateAir.Name = "buttonCreateAir";
-            this.buttonCreateAir.Size = new System.Drawing.Size(171, 24);
+            this.buttonCreateAir.Size = new System.Drawing.Size(92, 24);
             this.buttonCreateAir.TabIndex = 6;
-            this.buttonCreateAir.Text = "Создать Аэробус";
+            this.buttonCreateAir.Text = "Cоздать аэробус";
             this.buttonCreateAir.UseVisualStyleBackColor = true;
             this.buttonCreateAir.Click += new System.EventHandler(this.buttonCreateAir_Click);
             // 
@@ -132,6 +132,7 @@
             this.Name = "AirForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Самолет";
+            this.Load += new System.EventHandler(this.AirForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAir)).EndInit();
             this.ResumeLayout(false);
 

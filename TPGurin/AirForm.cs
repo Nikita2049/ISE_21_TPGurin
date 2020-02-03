@@ -13,7 +13,6 @@ namespace TPGurin
     public partial class AirForm : Form
     {
         private IAir air;
-
         public AirForm()
         {
             InitializeComponent();
@@ -64,9 +63,14 @@ namespace TPGurin
         {
             int minpos = 47;
             Random rnd = new Random();
-            air = new SuperAir(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.DarkCyan, Color.DarkGray, true, 3);
+            air = new SuperAir(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Black, Color.Red, true, 3);
             air.SetPosition(rnd.Next(10, 100), rnd.Next(minpos, 100), pictureBoxAir.Width, pictureBoxAir.Height);
             Draw();
+        }
+
+        private void AirForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

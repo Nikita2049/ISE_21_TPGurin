@@ -11,16 +11,14 @@ namespace TPGurin
     {
         protected float _startPosX;
         /// <summary>
-        /// Правая кооридната отрисовки самолета
+        /// Правая кооридната отрисовки судна
         /// </summary>
         protected float _startPosY;
         /// <summary>
         /// Ширина окна отрисовки
         /// </summary>
         protected int _pictureWidth;
-        /// <summary>
-        /// Высота окна отрисовки
-        /// </summary>
+        //Высота окна отрисовки
         protected int _pictureHeight;
         /// <summary>
         /// Максимальная скорость
@@ -31,12 +29,9 @@ namespace TPGurin
         /// </summary>
         public float Weight { protected set; get; }
         /// <summary>
-        /// Основной цвет кузова
+        /// Основной цвет - цвет ватерлинии
         /// </summary>
         public Color MainColor { protected set; get; }
-
-        public bool Chassis { protected set; get; }
-
         public void SetPosition(int x, int y, int width, int height)
         {
             _startPosX = x;
@@ -44,7 +39,12 @@ namespace TPGurin
             _pictureWidth = width;
             _pictureHeight = height;
         }
+        public void SetMainColor(Color color)
+        {
+            MainColor = color;
+        }
         public abstract void DrawAir(Graphics g);
         public abstract void MoveTransport(Direction direction);
     }
 }
+
