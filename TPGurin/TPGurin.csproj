@@ -54,8 +54,11 @@
       <DependentUpon>AirForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Direction.cs" />
+    <Compile Include="IAir.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SuperAir.cs" />
+    <Compile Include="Vehicle.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

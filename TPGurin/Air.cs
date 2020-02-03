@@ -7,58 +7,34 @@ using System.Threading.Tasks;
 
 namespace TPGurin
 {
-    public class Air
+    public class Air : Vehicle
     {
-        private float _startPosX;
-        private float _startPosY;
-        private int _pictureWidth;
-        private int _pictureHeight;
-
-        private const int shipWidth = 150;
-        private const int shipHeight = 10;
-
-        public int MaxSpeed { private set; get; }
-        public float Weight { private set; get; }
-        public Color MainColor { private set; get; }
-        public Color DopColor { private set; get; }
-        public bool Wing { private set; get; }
-        public bool Chassis { private set; get; }
-        /// <summary>
-        /// Конструктор
+        /// Ширина отрисовки самолета
         /// </summary>
-        /// <param name="maxSpeed">Максимальная скорость</param>
-        /// <param name="weight">Вес автомобиля</param>
-        /// <param name="mainColor">Основной цвет кузова</param>
-        /// <param name="dopColor">Дополнительный цвет</param>
-        public Air(int maxSpeed, float weight, Color bottomColor, Color dopColor, bool wing, bool chassis)
+        protected const int airWidth = 150;
+        /// <summary>
+        /// Ширина отрисовки самолета
+        /// </summary>
+        protected const int airHeight = 10;
+        /// <summary>
+        /// Максимальная скорость
+        /// </summary>
+        public Air(int maxSpeed, float weight, Color mainColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
-            MainColor = bottomColor;
-            DopColor = dopColor;
-            Wing = wing;
-            Chassis = chassis;
+            MainColor = mainColor;
         }
-        /// Установка позиции корабля
-        public void SetPosition(int x, int y, int width, int height)
+
+        public override void MoveTransport(Direction direction)
         {
-            _startPosX = x;
-            _startPosY = y;
-            _pictureWidth = width;
-            _pictureHeight = height;
-        }
-        /// <summary>
-        /// Изменение направления пермещения
-        /// </summary>
-        /// <param name="direction">Направление</param>
-        public void MoveTransport(Direction direction)
-        {
+            int k = 30;
             float step = MaxSpeed * 100 / Weight;
             switch (direction)
             {
                 // вправо
                 case Direction.Right:
-                    if (_startPosX + step < _pictureWidth - shipWidth)
+                    if (_startPosX + step < _pictureWidth - airWidth)
                     {
                         _startPosX += step;
                     }
@@ -73,27 +49,31 @@ namespace TPGurin
                     break;
                 //вверх
                 case Direction.Up:
-                    if (_startPosY - step > 0)
+                    if (_startPosY - k - step > 0)
                     {
                         _startPosY -= step;
                     }
                     break;
                 //вниз
                 case Direction.Down:
-                    if (_startPosY + step < _pictureHeight - shipHeight)
+                    if (_startPosY + step < _pictureHeight - airHeight)
                     {
                         _startPosY += step;
                     }
                     break;
             }
         }
-        public void DrawAir(Graphics g)
+        /// <summary>
+        /// Отрисовка самолета
+        /// </summary>
+        /// <param name="g"></param>
+        public override void DrawAir(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
             Brush white = new SolidBrush(Color.White);
             Brush bottom = new SolidBrush(MainColor);
             Brush brBlack = new SolidBrush(Color.Black);
-            Brush hull = new SolidBrush(DopColor);
+            Brush main = new SolidBrush(MainColor);
             Brush lblue = new SolidBrush(Color.LightBlue);
             Brush dred = new SolidBrush(Color.DarkRed);
             Brush gray = new SolidBrush(Color.Gray);
@@ -102,11 +82,11 @@ namespace TPGurin
             g.FillRectangle(white, _startPosX + 10, _startPosY - 1, 250, 62);
             g.FillEllipse(white, _startPosX + 230, _startPosY - 1, 70, 62);
             g.FillEllipse(white, _startPosX + 220, _startPosY + 22, 100, 38);
-            g.FillEllipse(hull, _startPosX - 35, _startPosY - 1, 120, 62);
-            g.FillRectangle(hull, _startPosX + 5, _startPosY - 55, 40, 65);
-            g.FillEllipse(hull, _startPosX - 35, _startPosY - 1, 120, 62);
-            g.FillEllipse(hull, _startPosX + 15, _startPosY - 55, 50, 100);
-            g.FillEllipse(hull, _startPosX - 25, _startPosY + 20, 70, 10);
+            g.FillEllipse(main, _startPosX - 35, _startPosY - 1, 120, 62);
+            g.FillRectangle(main, _startPosX + 5, _startPosY - 55, 40, 65);
+            g.FillEllipse(main, _startPosX - 35, _startPosY - 1, 120, 62);
+            g.FillEllipse(main, _startPosX + 15, _startPosY - 55, 50, 100);
+            g.FillEllipse(main, _startPosX - 25, _startPosY + 20, 70, 10);
 
             // Крылья
             g.FillRectangle(white, _startPosX + 100, _startPosY + 50, 100, 7);
@@ -132,20 +112,18 @@ namespace TPGurin
             g.FillRectangle(gray, _startPosX + 115, _startPosY + 53, 10, 20);
             g.DrawRectangle(pen, _startPosX + 165, _startPosY + 53, 5, 20);
 
-            if (Chassis)
-            {
-                g.FillRectangle(white, _startPosX + 250, _startPosY + 60, 15, 10);
-                g.DrawRectangle(pen, _startPosX + 250, _startPosY + 60, 15, 10);
-                g.FillRectangle(white, _startPosX + 255, _startPosY + 70, 5, 8);
-                g.DrawRectangle(pen, _startPosX + 255, _startPosY + 70, 5, 8);
-                g.FillRectangle(white, _startPosX + 40, _startPosY + 60, 15, 10);
-                g.DrawRectangle(pen, _startPosX + 40, _startPosY + 60, 15, 10);
-                g.FillRectangle(white, _startPosX + 45, _startPosY + 70, 5, 8);
-                g.DrawRectangle(pen, _startPosX + 45, _startPosY + 70, 5, 8);
-                g.FillEllipse(brBlack, _startPosX + 250, _startPosY + 75, 15, 15);
-                g.FillEllipse(brBlack, _startPosX + 45, _startPosY + 75, 15, 15);
-                g.FillEllipse(brBlack, _startPosX + 35, _startPosY + 75, 15, 15);
-            }
+            // Шасси
+            g.FillRectangle(white, _startPosX + 250, _startPosY + 60, 15, 10);
+            g.DrawRectangle(pen, _startPosX + 250, _startPosY + 60, 15, 10);
+            g.FillRectangle(white, _startPosX + 255, _startPosY + 70, 5, 8);
+            g.DrawRectangle(pen, _startPosX + 255, _startPosY + 70, 5, 8);
+            g.FillRectangle(white, _startPosX + 40, _startPosY + 60, 15, 10);
+            g.DrawRectangle(pen, _startPosX + 40, _startPosY + 60, 15, 10);
+            g.FillRectangle(white, _startPosX + 45, _startPosY + 70, 5, 8);
+            g.DrawRectangle(pen, _startPosX + 45, _startPosY + 70, 5, 8);
+            g.FillEllipse(brBlack, _startPosX + 250, _startPosY + 75, 15, 15);
+            g.FillEllipse(brBlack, _startPosX + 45, _startPosY + 75, 15, 15);
+            g.FillEllipse(brBlack, _startPosX + 35, _startPosY + 75, 15, 15);
         }
     }
 }
