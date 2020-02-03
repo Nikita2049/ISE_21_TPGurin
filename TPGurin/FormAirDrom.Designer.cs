@@ -35,7 +35,6 @@
             this.buttonGetAir = new System.Windows.Forms.Button();
             this.maskedTextBoxSpot = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.listBoxlevels = new System.Windows.Forms.ListBox();
             this.buttonSetAir = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,6 +42,8 @@
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFilePort = new System.Windows.Forms.OpenFileDialog();
             this.saveFilePort = new System.Windows.Forms.SaveFileDialog();
+            this.listBoxlevels = new System.Windows.Forms.ListBox();
+
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPort)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();

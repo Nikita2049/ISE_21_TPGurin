@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,7 @@ namespace TPGurin
     public partial class FormAirDrom : Form
     {
         /// <summary>
-        /// Объект от класса многоуровневой порта
+        /// Объект от класса многоуровневой аэропорта
         /// </summary>
         MultiLevelAirdrom parking;
         FormAirConfig form;
@@ -21,11 +22,14 @@ namespace TPGurin
         /// Количество уровней-парковок
         /// </summary>
         private const int countLevel = 5;
+        private Logger logger;
+        private Logger error;
         public FormAirDrom()
         {
             InitializeComponent();
-            parking = new MultiLevelAirdrom(countLevel, pictureBoxPort.Width,
-           pictureBoxPort.Height);
+            logger = LogManager.GetCurrentClassLogger();
+            error = LogManager.GetCurrentClassLogger();
+            parking = new MultiLevelAirdrom(countLevel, pictureBoxPort.Width, pictureBoxPort.Height);
             //заполнение listBox
             for (int i = 0; i < countLevel; i++)
             {
@@ -34,7 +38,7 @@ namespace TPGurin
             listBoxlevels.SelectedIndex = 0;
         }
         /// <summary>
-        /// Метод отрисовки порта
+        /// Метод отрисовки аэропорта
         /// </summary>
         private void Draw()
         {
@@ -53,14 +57,22 @@ namespace TPGurin
         {
             if (air != null && listBoxlevels.SelectedIndex > -1)
             {
-                int place = parking[listBoxlevels.SelectedIndex] + air;
-                if (place > -1)
+                try
                 {
+                    int place = parking[listBoxlevels.SelectedIndex] + air;
+                    logger.Info("Добавлен самолет " + air.ToString() + "на место " + place);
                     Draw();
                 }
-                else
+                catch (ParkingOverflowException ex)
                 {
-                    MessageBox.Show("Cамолет не удалось поставить");
+
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    error.Error(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    error.Error(ex.Message);
                 }
             }
         }
@@ -76,13 +88,16 @@ namespace TPGurin
         {
             if (saveFilePort.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (parking.SaveData(saveFilePort.FileName))
+                try
                 {
+                    parking.SaveData(saveFilePort.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранено в файл " + saveFilePort.FileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    error.Error(ex.Message);
                 }
             }
         }
@@ -91,14 +106,21 @@ namespace TPGurin
         {
             if (openFilePort.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (parking.LoadData(openFilePort.FileName))
+                try
                 {
+                    parking.LoadData(openFilePort.FileName);
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFilePort.FileName);
                 }
-                else
+                catch (ParkingOccupiedPlaceException ex)
                 {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    error.Error(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    error.Error(ex.Message);
                 }
                 Draw();
             }
@@ -119,25 +141,29 @@ namespace TPGurin
             {
                 if (maskedTextBoxSpot.Text != "")
                 {
-                    var air = parking[listBoxlevels.SelectedIndex] -
-                   Convert.ToInt32(maskedTextBoxSpot.Text);
-                    if (air != null)
+                    try
                     {
-                        Bitmap bmp = new Bitmap(pictureBoxTake.Width,
-                       pictureBoxTake.Height);
+                        var air = parking[listBoxlevels.SelectedIndex] - Convert.ToInt32(maskedTextBoxSpot.Text);
+                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
                         Graphics gr = Graphics.FromImage(bmp);
-                        air.SetPosition(15, 55, pictureBoxTake.Width,
-                       pictureBoxTake.Height);
+                        air.SetPosition(15, 55, pictureBoxTake.Width, pictureBoxTake.Height);
                         air.DrawAir(gr);
                         pictureBoxTake.Image = bmp;
+                        logger.Info("Изъят самолет" + air.ToString() + " с места " + maskedTextBoxSpot.Text);
+                        Draw();
                     }
-                    else
+                    catch (ParkingNotFoundException ex)
                     {
-                        Bitmap bmp = new Bitmap(pictureBoxTake.Width,
-                       pictureBoxTake.Height);
+                        MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
                         pictureBoxTake.Image = bmp;
+                        error.Error(ex.Message);
                     }
-                    Draw();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        error.Error(ex.Message);
+                    }
                 }
             }
         }
