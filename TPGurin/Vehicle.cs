@@ -25,7 +25,7 @@ namespace TPGurin
         /// </summary>
         public int MaxSpeed { protected set; get; }
         /// <summary>
-        /// Вес самолета
+        /// Вес судна
         /// </summary>
         public float Weight { protected set; get; }
         /// <summary>
@@ -47,4 +47,3 @@ namespace TPGurin
         public abstract void MoveTransport(Direction direction);
     }
 }
-

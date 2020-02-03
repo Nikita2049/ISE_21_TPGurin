@@ -20,6 +20,22 @@ namespace TPGurin
             Random rnd = new Random();
             Turbines = countturbines;
         }
+
+        public SuperAir(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 6)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                Board = Convert.ToBoolean(strs[4]);
+                Turbines = Convert.ToInt32(strs[5]);
+            }
+        }
+
+
         public override void DrawAir(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
@@ -76,6 +92,10 @@ namespace TPGurin
         {
             DopColor = color;
         }
+
+        public override string ToString()
+        {
+            return base.ToString() + ";" + DopColor.Name + ";" + Board + ";" + Turbines;
+        }
     }
 }
-
