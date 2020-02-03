@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.pictureBoxAir = new System.Windows.Forms.PictureBox();
-            this.buttonCreateAir = new System.Windows.Forms.Button();
+            this.buttonCreate = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
-            this.buttonCreateSuperAir = new System.Windows.Forms.Button();
+            this.buttonCreateAir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAir)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,16 +48,16 @@
             this.pictureBoxAir.TabIndex = 0;
             this.pictureBoxAir.TabStop = false;
             // 
-            // buttonCreateAir
+            // buttonCreate
             // 
-            this.buttonCreateAir.Location = new System.Drawing.Point(9, 10);
-            this.buttonCreateAir.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonCreateAir.Name = "buttonCreateAir";
-            this.buttonCreateAir.Size = new System.Drawing.Size(93, 24);
-            this.buttonCreateAir.TabIndex = 1;
-            this.buttonCreateAir.Text = "Создать";
-            this.buttonCreateAir.UseVisualStyleBackColor = true;
-            this.buttonCreateAir.Click += new System.EventHandler(this.buttonCreate_Click);
+            this.buttonCreate.Location = new System.Drawing.Point(9, 10);
+            this.buttonCreate.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonCreate.Name = "buttonCreate";
+            this.buttonCreate.Size = new System.Drawing.Size(93, 24);
+            this.buttonCreate.TabIndex = 1;
+            this.buttonCreate.Text = "Создать";
+            this.buttonCreate.UseVisualStyleBackColor = true;
+            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
             // buttonDown
             // 
@@ -105,28 +105,28 @@
             this.buttonLeft.UseVisualStyleBackColor = true;
             this.buttonLeft.Click += new System.EventHandler(this.buttonMove_Click);
             // 
-            // buttonCreateSuperAir
+            // buttonCreateAir
             // 
-            this.buttonCreateSuperAir.Location = new System.Drawing.Point(121, 10);
-            this.buttonCreateSuperAir.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonCreateSuperAir.Name = "buttonCreateSuperAir";
-            this.buttonCreateSuperAir.Size = new System.Drawing.Size(171, 24);
-            this.buttonCreateSuperAir.TabIndex = 6;
-            this.buttonCreateSuperAir.Text = "Создать Аэробус";
-            this.buttonCreateSuperAir.UseVisualStyleBackColor = true;
-            this.buttonCreateSuperAir.Click += new System.EventHandler(this.buttonMove_Click);
+            this.buttonCreateAir.Location = new System.Drawing.Point(121, 10);
+            this.buttonCreateAir.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonCreateAir.Name = "buttonCreateAir";
+            this.buttonCreateAir.Size = new System.Drawing.Size(171, 24);
+            this.buttonCreateAir.TabIndex = 6;
+            this.buttonCreateAir.Text = "Создать Аэробус";
+            this.buttonCreateAir.UseVisualStyleBackColor = true;
+            this.buttonCreateAir.Click += new System.EventHandler(this.buttonCreateAir_Click);
             // 
             // AirForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(662, 368);
-            this.Controls.Add(this.buttonCreateSuperAir);
+            this.Controls.Add(this.buttonCreateAir);
             this.Controls.Add(this.buttonLeft);
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonDown);
-            this.Controls.Add(this.buttonCreateAir);
+            this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.pictureBoxAir);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AirForm";
@@ -140,11 +140,11 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxAir;
-        private System.Windows.Forms.Button buttonCreateAir;
+        private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Button buttonDown;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonUp;
         private System.Windows.Forms.Button buttonLeft;
-        private System.Windows.Forms.Button buttonCreateSuperAir;
+        private System.Windows.Forms.Button buttonCreateAir;
     }
 }
