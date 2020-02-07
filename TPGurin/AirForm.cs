@@ -67,10 +67,5 @@ namespace TPGurin
             air.SetPosition(rnd.Next(10, 100), rnd.Next(minpos, 100), pictureBoxAir.Width, pictureBoxAir.Height);
             Draw();
         }
-
-        private void AirForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

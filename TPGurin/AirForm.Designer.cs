@@ -132,7 +132,6 @@
             this.Name = "AirForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Самолет";
-            this.Load += new System.EventHandler(this.AirForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAir)).EndInit();
             this.ResumeLayout(false);
 
