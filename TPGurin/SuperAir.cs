@@ -20,7 +20,6 @@ namespace TPGurin
             Random rnd = new Random();
             Turbines = countturbines;
         }
-
         public override void DrawAir(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
@@ -73,5 +72,10 @@ namespace TPGurin
             g.FillEllipse(dop, _startPosX + 90, _startPosY - 5, 7, 7);
             g.DrawEllipse(pen, _startPosX + 90, _startPosY - 5, 7, 7);
         }
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+        }
     }
 }
+

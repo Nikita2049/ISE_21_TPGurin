@@ -9,9 +9,9 @@ namespace TPGurin
     class MultiLevelAirdrom
     {
         /// <summary>
-        /// Список с уровнями в аэропорту
+        /// Список с уровнями порта
         /// </summary>
-        List<Port<IAir>> bandStages;
+        List<Port<IAir>> parkingStages;
         /// <summary>
         /// Сколько мест на каждом уровне
         /// </summary>
@@ -19,15 +19,15 @@ namespace TPGurin
         /// <summary>
         /// Конструктор
         /// </summary>
-        /// <param name="countStages">Количество уровенй в аэропорту</param>
+        /// <param name="countStages">Количество уровенй в порту</param>
         /// <param name="pictureWidth"></param>
         /// <param name="pictureHeight"></param>
         public MultiLevelAirdrom(int countStages, int pictureWidth, int pictureHeight)
         {
-            bandStages = new List<Port<IAir>>();
+            parkingStages = new List<Port<IAir>>();
             for (int i = 0; i < countStages; ++i)
             {
-                bandStages.Add(new Port<IAir>(countPlaces, pictureWidth, pictureHeight));
+                parkingStages.Add(new Port<IAir>(countPlaces, pictureWidth, pictureHeight));
             }
         }
         /// <summary>
@@ -39,9 +39,9 @@ namespace TPGurin
         {
             get
             {
-                if (ind > -1 && ind < bandStages.Count)
+                if (ind > -1 && ind < parkingStages.Count)
                 {
-                    return bandStages[ind];
+                    return parkingStages[ind];
                 }
                 return null;
             }
