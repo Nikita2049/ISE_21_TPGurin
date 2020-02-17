@@ -53,7 +53,7 @@
             this.buttonCreate.Location = new System.Drawing.Point(9, 10);
             this.buttonCreate.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(93, 24);
+            this.buttonCreate.Size = new System.Drawing.Size(93, 39);
             this.buttonCreate.TabIndex = 1;
             this.buttonCreate.Text = "Создать самолет";
             this.buttonCreate.UseVisualStyleBackColor = true;
@@ -110,7 +110,7 @@
             this.buttonCreateAir.Location = new System.Drawing.Point(121, 10);
             this.buttonCreateAir.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCreateAir.Name = "buttonCreateAir";
-            this.buttonCreateAir.Size = new System.Drawing.Size(92, 24);
+            this.buttonCreateAir.Size = new System.Drawing.Size(92, 39);
             this.buttonCreateAir.TabIndex = 6;
             this.buttonCreateAir.Text = "Cоздать аэробус";
             this.buttonCreateAir.UseVisualStyleBackColor = true;

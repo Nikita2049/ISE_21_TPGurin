@@ -26,6 +26,17 @@ namespace TPGurin
             MainColor = mainColor;
         }
 
+        public Air(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
+        }
+
         public override void MoveTransport(Direction direction)
         {
             int k = 30;
@@ -129,6 +140,10 @@ namespace TPGurin
             g.FillEllipse(brBlack, _startPosX + 105, _startPosY + 22, 7, 7);
             g.FillEllipse(brBlack, _startPosX + 18, _startPosY + 22, 7, 7);
             g.FillEllipse(brBlack, _startPosX + 23, _startPosY + 22, 7, 7);
+        }
+        public override string ToString()
+        {
+            return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
         }
     }
 }

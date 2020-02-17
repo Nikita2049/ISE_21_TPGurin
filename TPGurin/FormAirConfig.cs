@@ -115,7 +115,6 @@ DragDropEffects.Copy);
                 air.SetMainColor((Color)e.Data.GetData(typeof(Color)));
                 DrawAir();
             }
-
         }
 
         private void labelDopColor_DragDrop(object sender, DragEventArgs e)
@@ -126,7 +125,6 @@ DragDropEffects.Copy);
                 {
                     (air as SuperAir).SetDopColor((Color)e.Data.GetData(typeof(Color)));
                     DrawAir();
-
                 }
             }
         }

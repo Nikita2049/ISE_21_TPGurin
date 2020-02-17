@@ -56,7 +56,7 @@
             // 
             this.pictureBoxAir.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxAir.Location = new System.Drawing.Point(2, 15);
-            this.pictureBoxAir.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxAir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBoxAir.Name = "pictureBoxAir";
             this.pictureBoxAir.Size = new System.Drawing.Size(181, 91);
             this.pictureBoxAir.TabIndex = 0;
@@ -67,9 +67,9 @@
             this.groupBox1.Controls.Add(this.labelAirbus);
             this.groupBox1.Controls.Add(this.labelAir);
             this.groupBox1.Location = new System.Drawing.Point(29, 59);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Size = new System.Drawing.Size(104, 81);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
@@ -105,7 +105,7 @@
             this.panelAir.Controls.Add(this.labelBaseColor);
             this.panelAir.Controls.Add(this.pictureBoxAir);
             this.panelAir.Location = new System.Drawing.Point(212, 34);
-            this.panelAir.Margin = new System.Windows.Forms.Padding(2);
+            this.panelAir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelAir.Name = "panelAir";
             this.panelAir.Size = new System.Drawing.Size(186, 216);
             this.panelAir.TabIndex = 2;
@@ -149,9 +149,9 @@
             this.groupBox2.Controls.Add(this.panelWhite);
             this.groupBox2.Controls.Add(this.panelBlack);
             this.groupBox2.Location = new System.Drawing.Point(422, 34);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox2.Size = new System.Drawing.Size(120, 207);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
@@ -162,7 +162,7 @@
             this.panelGold.BackColor = System.Drawing.Color.Gold;
             this.panelGold.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelGold.Location = new System.Drawing.Point(62, 126);
-            this.panelGold.Margin = new System.Windows.Forms.Padding(2);
+            this.panelGold.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelGold.Name = "panelGold";
             this.panelGold.Size = new System.Drawing.Size(28, 31);
             this.panelGold.TabIndex = 2;
@@ -172,7 +172,7 @@
             this.panelGray.BackColor = System.Drawing.Color.Gray;
             this.panelGray.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelGray.Location = new System.Drawing.Point(14, 126);
-            this.panelGray.Margin = new System.Windows.Forms.Padding(2);
+            this.panelGray.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelGray.Name = "panelGray";
             this.panelGray.Size = new System.Drawing.Size(28, 31);
             this.panelGray.TabIndex = 2;
@@ -182,7 +182,7 @@
             this.panelYellow.BackColor = System.Drawing.Color.Yellow;
             this.panelYellow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelYellow.Location = new System.Drawing.Point(62, 90);
-            this.panelYellow.Margin = new System.Windows.Forms.Padding(2);
+            this.panelYellow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelYellow.Name = "panelYellow";
             this.panelYellow.Size = new System.Drawing.Size(28, 31);
             this.panelYellow.TabIndex = 2;
@@ -192,7 +192,7 @@
             this.panelRed.BackColor = System.Drawing.Color.Red;
             this.panelRed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelRed.Location = new System.Drawing.Point(14, 90);
-            this.panelRed.Margin = new System.Windows.Forms.Padding(2);
+            this.panelRed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelRed.Name = "panelRed";
             this.panelRed.Size = new System.Drawing.Size(28, 31);
             this.panelRed.TabIndex = 2;
@@ -202,7 +202,7 @@
             this.panelBlue.BackColor = System.Drawing.Color.Blue;
             this.panelBlue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelBlue.Location = new System.Drawing.Point(62, 54);
-            this.panelBlue.Margin = new System.Windows.Forms.Padding(2);
+            this.panelBlue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelBlue.Name = "panelBlue";
             this.panelBlue.Size = new System.Drawing.Size(28, 31);
             this.panelBlue.TabIndex = 2;
@@ -212,7 +212,7 @@
             this.panelGreen.BackColor = System.Drawing.Color.Green;
             this.panelGreen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelGreen.Location = new System.Drawing.Point(14, 54);
-            this.panelGreen.Margin = new System.Windows.Forms.Padding(2);
+            this.panelGreen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelGreen.Name = "panelGreen";
             this.panelGreen.Size = new System.Drawing.Size(28, 31);
             this.panelGreen.TabIndex = 2;
@@ -222,7 +222,7 @@
             this.panelWhite.BackColor = System.Drawing.Color.White;
             this.panelWhite.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelWhite.Location = new System.Drawing.Point(62, 19);
-            this.panelWhite.Margin = new System.Windows.Forms.Padding(2);
+            this.panelWhite.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelWhite.Name = "panelWhite";
             this.panelWhite.Size = new System.Drawing.Size(28, 31);
             this.panelWhite.TabIndex = 1;
@@ -232,7 +232,7 @@
             this.panelBlack.BackColor = System.Drawing.Color.Black;
             this.panelBlack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelBlack.Location = new System.Drawing.Point(14, 18);
-            this.panelBlack.Margin = new System.Windows.Forms.Padding(2);
+            this.panelBlack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelBlack.Name = "panelBlack";
             this.panelBlack.Size = new System.Drawing.Size(28, 32);
             this.panelBlack.TabIndex = 0;
@@ -240,7 +240,7 @@
             // buttonCancel
             // 
             this.buttonCancel.Location = new System.Drawing.Point(37, 201);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(67, 26);
             this.buttonCancel.TabIndex = 4;
@@ -250,7 +250,7 @@
             // buttonLocate
             // 
             this.buttonLocate.Location = new System.Drawing.Point(37, 162);
-            this.buttonLocate.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonLocate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonLocate.Name = "buttonLocate";
             this.buttonLocate.Size = new System.Drawing.Size(67, 28);
             this.buttonLocate.TabIndex = 5;
@@ -260,7 +260,6 @@
             // 
             // FormAirConfig
             // 
-            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
@@ -269,7 +268,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panelAir);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormAirConfig";
             this.Text = "Выбор Самолета";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAir)).EndInit();
